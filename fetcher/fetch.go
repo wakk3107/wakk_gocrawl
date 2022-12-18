@@ -12,6 +12,7 @@ import (
 	"golang.org/x/text/transform"
 )
 
+// 原生的方式
 func Fetch(url string) ([]byte, error) {
 	client := &http.Client{}
 	req, err := http.NewRequest("GET", url, nil)

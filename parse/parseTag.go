@@ -2,6 +2,7 @@ package parse
 
 import (
 	"crawl/engine"
+	"log"
 	"regexp"
 )
 
@@ -20,6 +21,7 @@ func ParseContent(content []byte) engine.ParseResult {
 			Url:       "https://book.douban.com/" + string(m[1]),
 			ParseFunc: engine.NilParser,
 		})
+		log.Printf("fetch url: %s", "https://book.doubancom/" + string(m[1]))
 
 	}
 
