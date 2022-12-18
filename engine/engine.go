@@ -22,7 +22,7 @@ func Run(seeds ...Request) {
 		// 再次更新任务栏
 		requests = append(requests, parseResult.Requests...)
 		for _, item := range parseResult.Items {
-			log.Printf("Got Items: %s", item)
+			log.Printf(" Got Items : %s", item)
 
 		}
 
