@@ -7,7 +7,7 @@ import (
 
 func main() {
 	engine.Run(engine.Request{
-		Url:       "https://book.douban.com/subject/36104107/",
-		ParseFunc: parse.ParseBookDetail,
+		Url:       "https://book.douban.com/",
+		ParseFunc: parse.ParseTag,
 	})
 }

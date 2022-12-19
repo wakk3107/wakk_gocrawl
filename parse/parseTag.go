@@ -8,7 +8,7 @@ import (
 
 const regexpStr = `<a href="([^"]+)" class="tag">([^<]+)</a>`
 
-func ParseContent(content []byte) engine.ParseResult {
+func ParseTag(content []byte) engine.ParseResult {
 	// <a href="/tag/小说" class="tag">小说</a>
 	//								匹配除了 " 之外的 可以理解为都要，直到结尾 +代表匹配一次以上
 	re := regexp.MustCompile(regexpStr)
@@ -19,9 +19,9 @@ func ParseContent(content []byte) engine.ParseResult {
 		result.Items = append(result.Items, m[2])
 		result.Requests = append(result.Requests, engine.Request{
 			Url:       "https://book.douban.com/" + string(m[1]),
-			ParseFunc: engine.NilParser,
+			ParseFunc: ParseBookList,
 		})
-		log.Printf("fetch url: %s", "https://book.doubancom/" + string(m[1]))
+		log.Printf("fetch url: %s", "https://book.doubancom/"+string(m[1]))
 
 	}
 
