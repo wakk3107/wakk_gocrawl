@@ -15,6 +15,7 @@ type Scheduler interface {
 type ConcurrentEngine struct {
 	WorkCount int
 	Scheduler Scheduler
+	ItemChan  chan interface{}
 }
 
 func (e *ConcurrentEngine) Run(seeds ...Request) {
@@ -29,12 +30,13 @@ func (e *ConcurrentEngine) Run(seeds ...Request) {
 		e.Scheduler.Submit(seed)
 	}
 	// 一直去接收结果
-	ItemCount := 0
 	for {
 		result := <-out
 		for _, item := range result.Items {
-			log.Printf("Got Item %d :%s \n", ItemCount, item)
-			ItemCount++
+			var res = item
+			go func() {
+				e.ItemChan <- res
+			}()
 		}
 		// 提交衍生任务
 		for _, request := range result.Requests {
