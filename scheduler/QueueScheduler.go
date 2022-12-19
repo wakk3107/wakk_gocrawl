@@ -18,15 +18,16 @@ func (q *QueueScheduler) ConfigureWorkerChan(r chan engine.Request) {
 func (q *QueueScheduler) WorkReady(w chan engine.Request) {
 	q.workerChan <- w
 }
-func (q *QueueScheduler) Run(seeds ...engine.Request) {
-	var requestQ []engine.Request
-	var workQ []chan engine.Request
+func (q *QueueScheduler) Run() {
+	q.workerChan = make(chan chan engine.Request)
+	q.requestChan = make(chan engine.Request)
 	go func() {
-
+		var requestQ []engine.Request
+		var workQ []chan engine.Request
 		for {
 			var activeRequest engine.Request
 			var activeWork chan engine.Request
-			// 有任务了就取出来
+			// 有任务了且有工人能去执行就取出来
 			if len(requestQ) > 0 && len(workQ) > 0 {
 				activeRequest = requestQ[0]
 				activeWork = workQ[0]

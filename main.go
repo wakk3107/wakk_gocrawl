@@ -9,7 +9,7 @@ import (
 func main() {
 	e := &engine.ConcurrentEngine{
 		5,
-		&scheduler.SimpleSchedule{},
+		&scheduler.QueueScheduler{},
 	}
 	e.Run(engine.Request{
 		Url:       "https://book.douban.com/",

@@ -8,9 +8,9 @@ import (
 
 type Scheduler interface {
 	Submit(Request)
-	ConfigureWorkerChan(chan Request)
-	//Run()
-	//WorkReady(chan Request)
+	// ConfigureWorkerChan(chan Request)
+	Run()
+	WorkReady(chan Request)
 }
 type ConcurrentEngine struct {
 	WorkCount int
@@ -18,12 +18,11 @@ type ConcurrentEngine struct {
 }
 
 func (e *ConcurrentEngine) Run(seeds ...Request) {
-	in := make(chan Request)
 	out := make(chan ParseResult)
-	e.Scheduler.ConfigureWorkerChan(in)
+	e.Scheduler.Run()
 	// 生成工人
 	for i := 0; i < e.WorkCount; i++ {
-		CreateWork(in, out)
+		CreateWork(out, e.Scheduler)
 	}
 	// 上传第一批种子
 	for _, seed := range seeds {
@@ -43,9 +42,12 @@ func (e *ConcurrentEngine) Run(seeds ...Request) {
 		}
 	}
 }
-func CreateWork(in chan Request, out chan ParseResult) {
+func CreateWork(out chan ParseResult, s Scheduler) {
+	in := make(chan Request)
 	go func() {
 		for {
+			// 告诉调度器当前 worker 准备就绪，任务放进 in 吧
+			s.WorkReady(in)
 			request := <-in
 			result, err := worker(request)
 			if err != nil {

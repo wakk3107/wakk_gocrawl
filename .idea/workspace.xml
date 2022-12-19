@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4aa1837f-e027-4ed0-be88-751bdafa0e79" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/scheduler/QueueScheduler.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scheduler/SimpleScheduler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/engine/engine.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/SimpleEngine.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/ConcurrentEngine.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/ConcurrentEngine.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scheduler/QueueScheduler.go" beforeDir="false" afterPath="$PROJECT_DIR$/scheduler/QueueScheduler.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
