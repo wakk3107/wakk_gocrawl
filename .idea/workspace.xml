@@ -9,6 +9,7 @@
       <change beforePath="$PROJECT_DIR$/engine/ConcurrentEngine.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/ConcurrentEngine.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scheduler/QueueScheduler.go" beforeDir="false" afterPath="$PROJECT_DIR$/scheduler/QueueScheduler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scheduler/SimpleScheduler.go" beforeDir="false" afterPath="$PROJECT_DIR$/scheduler/SimpleScheduler.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

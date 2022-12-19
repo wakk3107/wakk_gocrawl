@@ -6,6 +6,14 @@ type SimpleSchedule struct {
 	workerChan chan engine.Request
 }
 
+func (s *SimpleSchedule) Run() {
+	s.workerChan = make(chan engine.Request)
+}
+
+func (s *SimpleSchedule) WorkReady(requests chan engine.Request) {
+	return
+}
+
 func (s *SimpleSchedule) Submit(r engine.Request) {
 	// 防止卡住
 	go func() {
@@ -13,6 +21,6 @@ func (s *SimpleSchedule) Submit(r engine.Request) {
 	}()
 
 }
-func (s *SimpleSchedule) ConfigureWorkerChan(c chan engine.Request) {
-	s.workerChan = c
+func (s *SimpleSchedule) WorkChan() chan engine.Request {
+	return s.workerChan
 }
